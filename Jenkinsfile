@@ -11,6 +11,9 @@ node {
             junit 'test-reports/results.xml'
         }
     }
+    stage('Manual Approval') {
+        input message: 'Lanjutkan ke tahap Deploy?'
+    }
     stage('Deploy') {
         try {
             VOLUME = pwd() + "/${env.BUILD_ID}/sources:/src"
